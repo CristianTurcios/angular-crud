@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from "@angular/forms";
-import { DataService } from 'src/app/data.service';
-import { CategoryService } from 'src/app/category.service';
+import { DataService } from 'src/app/services/data.service';
+import { CategoryService } from 'src/app/services/category.service';
 import { Router } from '@angular/router';
 import { Category } from 'src/app/models/Category';
-import { PostService } from 'src/app/post.service';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-add-post',
@@ -25,7 +25,7 @@ export class AddPostComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.data.changeTitle("Add Post")
+    this.data.changeTitle('Add Post');
     this.categoryService.getCategories().subscribe((data: Category[]) => {
       this.categories = data;
     });

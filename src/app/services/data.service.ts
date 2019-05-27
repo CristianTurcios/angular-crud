@@ -11,6 +11,6 @@ export class DataService {
   constructor() { }
 
   changeTitle(title: string) {
-    this.titleSource.next(title)
+    this.titleSource.next(title);
   }
 }
