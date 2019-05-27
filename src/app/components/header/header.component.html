@@ -1,15 +1,33 @@
-<nav class="navbar is-link">
+<nav class="navbar is-link" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" routerLink="">
       <img src="https://www.laureate.net/wp-content/uploads/2019/04/header-logo@2x.png">
     </a>
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample" (click)="openHamburgerMenu()">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
   </div>
-  <div class="navbar-menu" *ngIf="hasSession">
+  <div id="navbarBasicExample" class="navbar-menu" 
+    [ngClass]="{ 'is-active': isOpenMenuMobile }"
+    *ngIf="hasSession">
     <div class="navbar-start">
-      <a class="navbar-item" routerLink="">Posts</a>
-      <a class="navbar-item" routerLink="list-category">Categories</a>
-      <a class="navbar-item" routerLink="list-user">User</a>
-      <a class="navbar-item" (click)="logout()">Logout</a>
+      <a class="navbar-item" (click)="openHamburgerMenu()" routerLink="">Posts</a>
+      <a class="navbar-item" (click)="openHamburgerMenu()" routerLink="list-category">Categories</a>
+      <a class="navbar-item" (click)="openHamburgerMenu()" routerLink="list-user">User</a>
+      <a class="navbar-item" (click)="openHamburgerMenu()" routerLink="change-password">Change Password</a>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-primary" (click)="logout()">
+            <strong>Logout</strong>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </nav>

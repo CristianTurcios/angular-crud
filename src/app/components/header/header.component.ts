@@ -10,16 +10,23 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   hasSession: boolean;
+  isOpenMenuMobile: boolean;
+
   constructor(
     private router: Router,
     private authService: AuthService,
     private cookieService: CookieService
   ) {
+    this.isOpenMenuMobile = false;
     this.hasSession = this.authService.sessionExists();
   }
 
   ngOnInit() {
     this.authService.onUserLoggedIn().subscribe(() => this.hasSession = this.authService.sessionExists());
+  }
+
+  openHamburgerMenu(): void {
+    this.isOpenMenuMobile = !this.isOpenMenuMobile;
   }
 
   logout(): void {
