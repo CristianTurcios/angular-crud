@@ -7,11 +7,13 @@ import { DataService } from './services/data.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title:string;
+  title: string;
 
   constructor(private data: DataService) { }
 
   ngOnInit() {
     this.data.currentTitle.subscribe(title => this.title = title)
   }
+
+  titleEventHandler(event: any) {}
 }

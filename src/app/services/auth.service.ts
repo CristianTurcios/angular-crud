@@ -48,7 +48,11 @@ export class AuthService {
   }
 
   getUserRole(): string {
-    return this.getTokenPayload().userRole;
+    if (!this.getTokenPayload()) {
+      return '';
+    } else {
+      return this.getTokenPayload().hasOwnProperty('userRole') ? this.getTokenPayload().userRole : '';
+    }
   }
 
   sessionExists(): boolean {
