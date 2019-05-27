@@ -47,10 +47,8 @@ export class AuthService {
     }
   }
 
-  getUserInformation(): Observable<any> {
-    const token = this.getTokenPayload();
-    const url = `${environment.apiUrl}/user/${token.id}`;
-    return this.http.get(url);
+  getUserRole(): string {
+    return this.getTokenPayload().userRole;
   }
 
   sessionExists(): boolean {

@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  userRole: string;
   hasSession: boolean;
   isOpenMenuMobile: boolean;
 
@@ -19,10 +20,14 @@ export class HeaderComponent implements OnInit {
   ) {
     this.isOpenMenuMobile = false;
     this.hasSession = this.authService.sessionExists();
+    this.userRole = this.authService.getUserRole();
   }
 
   ngOnInit() {
-    this.authService.onUserLoggedIn().subscribe(() => this.hasSession = this.authService.sessionExists());
+    this.authService.onUserLoggedIn().subscribe(() => {
+      this.userRole = this.authService.getUserRole();
+      this.hasSession = this.authService.sessionExists();
+    });
   }
 
   openHamburgerMenu(): void {

@@ -3,6 +3,7 @@ import { CategoryService } from 'src/app/services/category.service';
 import { Category } from 'src/app/models/Category';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-category-list',
@@ -10,12 +11,17 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./category-list.component.scss']
 })
 export class CategoryListComponent implements OnInit {
+  userRole: string;
   categories: Category[];
+
   constructor(
     private categoryService: CategoryService,
     private router: Router,
-    private data: DataService
-  ) { }
+    private data: DataService,
+    private authService: AuthService
+  ) {
+    this.userRole = this.authService.getUserRole();
+  }
 
   ngOnInit() {
     this.data.changeTitle('Category');

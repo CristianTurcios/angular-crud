@@ -1,6 +1,7 @@
 <section class="section">
   <div class="container">
-    <a class="button is-success" routerLink="/add-category">Add Category</a>
+    <a class="button is-success" routerLink="/add-category" *ngIf="['Viewer'].indexOf(userRole) === -1">Add
+      Category</a>
   </div>
 </section>
 
@@ -10,14 +11,14 @@
       <tr>
         <th>ID</th>
         <th>Name</th>
-        <th>Actions</th>
+        <th *ngIf="['Viewer'].indexOf(userRole) === -1">Actions</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let category of categories">
         <th>{{ category.id }}</th>
         <td>{{ category.name }}</td>
-        <td>
+        <td *ngIf="['Viewer'].indexOf(userRole) === -1">
           <a class="button is-primary is-outlined" (click)="editCategory(category.id)">Edit</a>
           <a class="button is-danger is-outlined" (click)="deleteCategory(category.id)">Delete</a>
         </td>

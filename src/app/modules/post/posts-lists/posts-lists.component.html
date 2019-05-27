@@ -1,6 +1,6 @@
 <section class="section">
   <div class="container">
-    <a class="button is-success" routerLink="add-post">Add Post</a>
+    <a class="button is-success" routerLink="add-post" *ngIf="['Viewer'].indexOf(userRole) === -1">Add Post</a>
   </div>
 </section>
 
@@ -13,7 +13,7 @@
         <th>Title</th>
         <th>Text</th>
         <th>Categories</th>
-        <th>Actions</th>
+        <th *ngIf="['Viewer'].indexOf(userRole) === -1">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -25,7 +25,7 @@
           <span class="tag is-info" *ngFor="let category of post.categories"><a class="tag-link">{{ category.name }}
             </a></span>
         </td>
-        <td>
+        <td *ngIf="['Viewer'].indexOf(userRole) === -1">
           <a class="button is-primary is-outlined" (click)="editPost(post.id)">Edit</a>
           <a class="button is-danger is-outlined" (click)="deletePost(post.id)">Delete</a>
         </td>

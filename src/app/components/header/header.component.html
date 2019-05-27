@@ -14,10 +14,11 @@
     [ngClass]="{ 'is-active': isOpenMenuMobile }"
     *ngIf="hasSession">
     <div class="navbar-start">
-      <a class="navbar-item" (click)="openHamburgerMenu()" routerLink="">Posts</a>
       <a class="navbar-item" (click)="openHamburgerMenu()" routerLink="list-category">Categories</a>
-      <a class="navbar-item" (click)="openHamburgerMenu()" routerLink="list-user">User</a>
-      <a class="navbar-item" (click)="openHamburgerMenu()" routerLink="change-password">Change Password</a>
+      <a class="navbar-item" (click)="openHamburgerMenu()" routerLink="">Posts</a>
+      <a class="navbar-item" (click)="openHamburgerMenu()" routerLink="list-user"
+        *ngIf="['Editor', 'Viewer'].indexOf(userRole) === -1">User</a>
+      <!-- <a class="navbar-item" (click)="openHamburgerMenu()" routerLink="change-password">Change Password</a> -->
     </div>
 
     <div class="navbar-end">
