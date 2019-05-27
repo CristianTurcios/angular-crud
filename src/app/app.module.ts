@@ -2,18 +2,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
 
 // Components
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HomeComponent } from './components/home/home.component';
-import { PostsListsComponent } from './components/posts-lists/posts-lists.component';
-import { AddPostComponent } from './components/add-post/add-post.component';
-import { EditPostComponent } from './components/edit-post/edit-post.component';
-import { LoginComponent } from './components/login/login.component';
+
+// Modules
+import { UserModule } from './modules/user/user.module';
+import { PostModule } from './modules/post/post.module';
+import { LoginModule } from './modules/login/login.module';
+import { CategoryModule } from './modules/category/category.module';
 
 // Services
 import { AuthorizationInterceptorService } from './services/authorization-interceptor.service';
@@ -25,18 +26,17 @@ import { CookieService } from 'ngx-cookie-service';
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent,
-    HomeComponent,
-    PostsListsComponent,
-    AddPostComponent,
-    EditPostComponent,
-    LoginComponent
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CategoryModule,
+    UserModule,
+    PostModule,
+    LoginModule
   ],
   providers: [
     CookieService,

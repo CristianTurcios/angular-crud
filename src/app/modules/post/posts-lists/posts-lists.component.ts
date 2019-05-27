@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
 import { Post } from 'src/app/models/Post';
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/services/data.service';
+
 
 @Component({
   selector: 'app-posts-lists',
@@ -12,10 +14,12 @@ export class PostsListsComponent implements OnInit {
   posts: Post[];
   constructor(
     private postService: PostService,
-    private router: Router
+    private router: Router,
+    private data: DataService
   ) { }
 
   ngOnInit() {
+    this.data.changeTitle('Posts');
     this.postService.getPosts().subscribe( (posts: Post[]) => {
       this.posts = posts;
     });
@@ -31,5 +35,4 @@ export class PostsListsComponent implements OnInit {
       this.posts.splice(postIndex, 1);
     });
   }
-
 }

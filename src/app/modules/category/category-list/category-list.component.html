@@ -1,0 +1,27 @@
+<section class="section">
+  <div class="container">
+    <a class="button is-success" routerLink="/add-category">Add Category</a>
+  </div>
+</section>
+
+<div class="container">
+  <table class="table is-hoverable is-fullwidth">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let category of categories">
+        <th>{{ category.id }}</th>
+        <td>{{ category.name }}</td>
+        <td>
+          <a class="button is-primary is-outlined" (click)="editCategory(category.id)">Edit</a>
+          <a class="button is-danger is-outlined" (click)="deleteCategory(category.id)">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
