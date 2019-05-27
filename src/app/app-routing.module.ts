@@ -2,13 +2,20 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 // Category
-import { CategoryListComponent } from './modules/category/category-list/category-list.component';
 import { AddCategoryComponent } from './modules/category/add-category/add-category.component';
+import { CategoryListComponent } from './modules/category/category-list/category-list.component';
 import { EditCategoryComponent } from './modules/category/edit-category/edit-category.component';
+
 // Posts
-import { PostsListsComponent } from './modules/post/posts-lists/posts-lists.component';
 import { AddPostComponent } from './modules/post/add-post/add-post.component';
 import { EditPostComponent } from './modules/post/edit-post/edit-post.component';
+import { PostsListsComponent } from './modules/post/posts-lists/posts-lists.component';
+
+// User
+import { AddUserComponent } from './modules/user/add-user/add-user.component';
+import { UserListComponent } from './modules/user/user-list/user-list.component';
+import { EditUserComponent } from './modules/user/edit-user/edit-user.component';
+
 
 // Login
 import { LoginComponent } from './modules//login/login/login.component';
@@ -55,6 +62,24 @@ const routes: Routes = [
     component: EditPostComponent,
     canActivate: [GuardService],
     data: { roles: ['Admin', 'Editor'] },
+  },
+  {
+    path: 'list-user',
+    component: UserListComponent,
+    canActivate: [GuardService],
+    data: { roles: ['Admin'] },
+  },
+  {
+    path: 'add-user',
+    component: AddUserComponent,
+    canActivate: [GuardService],
+    data: { roles: ['Admin'] },
+  },
+  {
+    path: 'edit-user',
+    component: EditUserComponent,
+    canActivate: [GuardService],
+    data: { roles: ['Admin'] },
   },
   { path: '**', redirectTo: '' }
 ];

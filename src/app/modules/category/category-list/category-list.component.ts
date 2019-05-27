@@ -25,11 +25,11 @@ export class CategoryListComponent implements OnInit {
   }
 
   editCategory(categoryId) {
-    this.router.navigate(['/edit-category'], { queryParams: { categoryId: categoryId } });
+    this.router.navigate(['/edit-category'], { queryParams: { categoryId } });
   }
 
   deleteCategory(categoryId) {
-    this.categoryService.deletePost(categoryId).subscribe(() => {
+    this.categoryService.deleteCategory(categoryId).subscribe(() => {
       const postIndex = this.categories.findIndex((category) => category.id === categoryId);
       this.categories.splice(postIndex, 1);
     });

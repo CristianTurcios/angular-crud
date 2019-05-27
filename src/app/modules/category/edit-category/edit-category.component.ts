@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Post } from 'src/app/models/Post';
 import { CategoryService } from 'src/app/services/category.service';
 import { Category } from 'src/app/models/Category';
 
@@ -14,7 +13,7 @@ import { Category } from 'src/app/models/Category';
 export class EditCategoryComponent implements OnInit {
   categoryId: number;
   editForm: FormGroup;
-  submitted: boolean = false;
+  submitted: boolean;
   category: Category;
 
   constructor(
@@ -23,7 +22,9 @@ export class EditCategoryComponent implements OnInit {
     private data: DataService,
     private formBuilder: FormBuilder,
     private categoryService: CategoryService
-  ) { }
+  ) {
+    this.submitted = false;
+  }
 
   ngOnInit() {
     this.data.changeTitle('Edit Category');

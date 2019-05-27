@@ -29,8 +29,7 @@ export class CategoryService {
     return this.http.put(`${this.apiUrl}/category/${data.id}`, data);
   }
 
-  deletePost(categoryId) {
+  deleteCategory(categoryId) {
     return this.http.delete(`${this.apiUrl}/category/${categoryId}`);
   }
-
 }
