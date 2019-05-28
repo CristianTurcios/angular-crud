@@ -1,14 +1,15 @@
-  
   <section class="section">
     <div class="container">
       <p>username: admin, pass: admin</p>
+      <p>username: editor, pass: editor</p>
+      <p>username: viewer, pass: viewer</p>
     </div>
   </section>
   <div class="container">
-      <div class="notification is-danger" *ngIf="showAlert">
-        <button class="delete" (click)="hideAlert()"></button>
-        {{alertMessage}}
-      </div>
+    <div class="notification is-danger" *ngIf="showAlert">
+      <button class="delete" (click)="hideAlert()"></button>
+      {{alertMessage}}
+    </div>
 
     <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
       <div class="field">
@@ -34,4 +35,22 @@
         </p>
       </div>
     </form>
+
+    <section class="section">
+      <div class="columns is-mobile">
+        <div class="column is-half is-offset-one-quarter">
+          <p>Or enter with your facebook account. Note: facebook user only can see the content.</p>
+        </div>
+      </div>
+      <div class="columns is-mobile">
+        <div class="column is-half is-offset-one-quarter">
+          <a class="button is-link" (click)="signInWithFB()">
+            <span class="icon">
+              <i class="fab fa-facebook"></i>
+            </span>
+            <span>Facebook</span>
+          </a>
+        </div>
+      </div>
+    </section>
   </div>

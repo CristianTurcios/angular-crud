@@ -21,6 +21,20 @@ import { AuthorizationInterceptorService } from './services/authorization-interc
 
 // External libraries
 import { CookieService } from 'ngx-cookie-service';
+import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
+import { FacebookLoginProvider } from 'angularx-social-login';
+
+
+const config = new AuthServiceConfig([
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider('2782246725180645')
+  }
+]);
+
+export function provideConfig() {
+  return config;
+}
 
 @NgModule({
   declarations: [
@@ -33,6 +47,7 @@ import { CookieService } from 'ngx-cookie-service';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    SocialLoginModule,
     CategoryModule,
     UserModule,
     PostModule,
@@ -45,6 +60,10 @@ import { CookieService } from 'ngx-cookie-service';
       useClass: AuthorizationInterceptorService,
       multi: true
     },
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }
   ],
   bootstrap: [AppComponent]
 })

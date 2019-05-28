@@ -27,6 +27,10 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/login`, data);
   }
 
+  loginUserSocialUsers(data: object): Observable<any> {
+    return this.http.post(`${this.apiUrl}/loginSocialUser`, data);
+  }
+
   loggedInUser(): void {
     this.userLoggedIn.next();
   }

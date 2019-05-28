@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from 'src/app/services/auth.service';
+import { AuthService as SocialAuth } from 'angularx-social-login';
 
 @Component({
   selector: 'app-header',
@@ -15,8 +16,10 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private socialAuth: SocialAuth,
     private authService: AuthService,
     private cookieService: CookieService
+
   ) {
     this.isOpenMenuMobile = false;
     this.hasSession = this.authService.sessionExists();
@@ -35,6 +38,10 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(): void {
+    if (this.authService.getTokenPayload().hasOwnProperty('provider')) {
+      this.socialAuth.signOut();
+    }
+
     this.hasSession = false;
     this.cookieService.delete('jwt');
     this.router.navigate(['/login']);
